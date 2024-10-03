@@ -1,5 +1,3 @@
-<script>
-
 getAboutBlankIframe = () => {
   let iframe = document.querySelector('iframe[src="about:blank"]');
   if (!iframe) {
@@ -33,12 +31,10 @@ checkIsBrowser = async () => {
   return majorVersion > 70;
 }
 
-str = `
-full version list = ${JSON.stringify(await getFullVersionList())}
+getStr = async () =>  `
+full version list = ${JSON.stringify(await getFullVersionList())}<br>
 app version = ${await getAppVersionFromIframe()}<br>
 is browser = ${await checkIsBrowser()}<br>
 `;
 
-document.write(str);
-
-</script>
+getStr().then(str => document.write(str))
