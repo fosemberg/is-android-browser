@@ -34,13 +34,13 @@ checkIsBrowser = async () => {
   return majorVersion > 70;
 }
 
-str = `
+getStr = async () => `
 full version list = ${JSON.stringify(await getFullVersionList())}
 app version = ${await getAppVersionFromIframe()}<br>
 is browser = ${await checkIsBrowser()}<br>
 `;
 
-document.write(str);
+getStr().then(str => document.write(str));
 
 </script>
 </body>
