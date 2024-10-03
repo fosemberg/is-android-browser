@@ -37,7 +37,9 @@ checkIsBrowser = async () => {
 getStr = async () => `
 full version list = ${JSON.stringify(await getFullVersionList())}<br>
 app version = ${await getAppVersionFromIframe()}<br>
-is browser = ${await checkIsBrowser()}<br>
+is browser by version = ${await checkIsBrowser()}<br>
+is browser by yandex.ajaxNavigation = ${!yandex.hasOwnProperty('ajaxNavigation')}<br>
+is browser by yandex.profilePromo = ${!yandex.hasOwnProperty('profilePromo')}<br>
 `;
 
 getStr().then(str => document.write(str));
