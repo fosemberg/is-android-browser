@@ -35,7 +35,7 @@ checkIsBrowser = async () => {
 }
 
 getStr = async () => `
-full version list = ${JSON.stringify(await getFullVersionList())}
+full version list = ${JSON.stringify(await getFullVersionList())}<br>
 app version = ${await getAppVersionFromIframe()}<br>
 is browser = ${await checkIsBrowser()}<br>
 `;
