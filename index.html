@@ -1,0 +1,44 @@
+<script>
+
+getAboutBlankIframe = () => {
+  let iframe = document.querySelector('iframe[src="about:blank"]');
+  if (!iframe) {
+    iframe = document.createElement('iframe');
+    iframe.src = 'about:blank';
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
+  }
+  return iframe;
+}
+
+getFullVersionList = async () => {
+  return (await getAboutBlankIframe().contentWindow.navigator.userAgentData
+    .getHighEntropyValues(["fullVersionList"])).fullVersionList;
+}
+
+getAppVersionFromIframe = async () => {
+  const fullVersionList = await getFullVersionList();
+  return fullVersionList.find((
+    {brand}) => brand === 'Yandex'
+  ).version
+}
+
+getMajorAppVersionFromIframe = async () => {
+  const version = await getAppVersionFromIframe();
+  return version.split('.')[0];
+}
+
+checkIsBrowser = async () => {
+  const majorVersion = +(await getMajorAppVersionFromIframe());
+  return majorVersion > 70;
+}
+
+str = `
+full version list = ${JSON.stringify(await getFullVersionList())}
+app version = ${await getAppVersionFromIframe()}<br>
+is browser = ${await checkIsBrowser()}<br>
+`;
+
+document.write(str);
+
+</script>
