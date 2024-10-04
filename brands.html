@@ -1,0 +1,11 @@
+<body>
+<script>
+
+getStr = async () => `
+navigator.userAgentData.brands = ${navigator.userAgentData.brands}<br>
+`;
+
+getStr().then(str => document.write(str));
+
+</script>
+</body>
