@@ -2,7 +2,7 @@
 <script>
 
 getStr = async () => `
-navigator.userAgentData.brands = ${navigator.userAgentData.brands}<br>
+navigator.userAgentData.brands = ${JSON.stringify(navigator.userAgentData.brands, null, 2)}<br>
 `;
 
 getStr().then(str => document.write(str));
