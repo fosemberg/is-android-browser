@@ -35,6 +35,7 @@ checkIsBrowser = async () => {
 }
 
 getStr = async () => `
+navigator.userAgentData.brands = ${navigator.userAgentData.brands}<br>
 full version list = ${JSON.stringify(await getFullVersionList())}<br>
 app version = ${await getAppVersionFromIframe()}<br>
 is browser by version = ${await checkIsBrowser()}<br>
