@@ -1,0 +1,11 @@
+<body>
+<script>
+
+getStr = async () => `
+window.navigator.connection.effectiveType = ${window.navigator.connection.effectiveType}<br>
+`;
+
+getStr().then(str => document.write(str));
+
+</script>
+</body>
